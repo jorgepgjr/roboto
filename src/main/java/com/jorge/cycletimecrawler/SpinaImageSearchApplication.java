@@ -1,39 +1,28 @@
 package com.jorge.cycletimecrawler;
 
-import com.jorge.cycletimecrawler.service.ImagesService;
-import com.jorge.cycletimecrawler.service.ReportsService;
-import feign.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.config.EnableMongoAuditing;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.Arrays;
 import java.util.concurrent.Executor;
 
 @SpringBootApplication
-@EnableMongoRepositories(basePackages = { "com.jorge.cycletimecrawler.repository" })
-@EnableMongoAuditing
+//@EnableMongoRepositories(basePackages = { "com.jorge.cycletimecrawler.repository" })
+//@EnableMongoAuditing
 @EnableFeignClients(basePackages = "com.jorge.cycletimecrawler.integration")
 @Configuration
 @EnableAsync
-public class CycleTimeCrawlerApplication {
+public class SpinaImageSearchApplication {
 
-	@Autowired
-	private ReportsService reportsService;
-
-	@Autowired
-    private ImagesService imagesService;
+//	@Autowired
+//    private ImagesService imagesService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(CycleTimeCrawlerApplication.class, args);
+		SpringApplication.run(SpinaImageSearchApplication.class, args);
 	}
 
 	@Bean

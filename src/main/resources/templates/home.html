@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Relatórios Marketplace</title>
+    <title>Spina Image Search</title>
     <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/bootstrap/css/bootstrap-select.min.css}" rel="stylesheet"/>
     <link th:href="@{/css/home.css}" rel="stylesheet"/>
@@ -19,118 +19,18 @@
                 <span class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home">Relatórios Marketplace </a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li id="menu-aluno"><a href="aluno">Cycle Time</a></li>
-                <li id="menu-about"><a href="#">About</a></li>
-            </ul>
+            <a class="navbar-brand" href="home">Spina Image Search</a>
         </div>
     </div>
 </nav>
 <div class="container" id="panel-body">
-    <div class="col-sm-12">
-        <form action="/test" method="post">
-            <button type="submit"> Teste</button>
-        </form>
-
-        <form action="/save" method="post">
-            <button type="submit"> Save</button>
-        </form>
-    </div>
-
-    <div class="col-sm-6">
-        <h1>Issues Terminadas: </h1>
-        <table class="table table-striped" id="table-aluno" th:fragment="aluno-tabela">
-            <thead>
-            <tr>
-                <th data-field="matricula">MKTP</th>
-                <th data-field="nome">Nome</th>
-                <th data-field="fotoUrl">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="issue : ${done}" class="clickable-row" th:attr="data-href=${issue.key}">
-                <td><span th:text="${issue.key}"/></td>
-                <td><span th:text="${issue.summary}"/></td>
-                <td><span th:text="${issue.statusName}"/></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-sm-6">
-        <h1>Novas Issues: </h1>
-        <table class="table table-striped" id="table-novas" th:fragment="aluno-tabela">
-            <thead>
-            <tr>
-                <th data-field="matricula">MKTP</th>
-                <th data-field="nome">Nome</th>
-                <th data-field="fotoUrl">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="issue : ${news}" class="clickable-row" th:attr="data-href=${issue.key}">
-                <td><span th:text="${issue.key}"/></td>
-                <td><span th:text="${issue.summary}"/></td>
-                <td><span th:text="${issue.statusName}"/></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="col-sm-6">
-        <h1>Issues Que foram para WIP: </h1>
-        <table class="table table-striped" id="table-wip" th:fragment="aluno-tabela">
-            <thead>
-            <tr>
-                <th data-field="matricula">MKTP</th>
-                <th data-field="nome">Nome</th>
-                <th data-field="fotoUrl">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="issue : ${wip}" class="clickable-row" th:attr="data-href=${issue.key}">
-                <td><span th:text="${issue.key}"/></td>
-                <td><span th:text="${issue.summary}"/></td>
-                <td><span th:text="${issue.statusName}"/></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
     <div class="col-sm-6">
         <h1>Get Images: </h1>
-        <form action="/getImages" method="post">
+        <form action="/getImagesFreedom" method="post">
             <textarea name="skus"></textarea>
             <button type="submit"> Get Images</button>
         </form>
-        <table class="table table-striped" id="table-check-on-jira" >
-            <thead>
-            <tr>
-                <th data-field="sku">SKU</th>
-                <th data-field="fotoUrl">URLs</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="product : ${products}" class="clickable-row" th:attr="data-href=${issue.key}">
-                <td><span th:text="${product.sku}"/></td>
-                <td><span th:text="${product.summary}"/></td>
-            </tr>
-            </tbody>
-        </table>
     </div>
-
-    <div class="col-sm-6">
-        <h1>Check Hibrid: </h1>
-        <form action="/checkHibrid" method="post">
-            <textarea name="skus"></textarea>
-            <button type="submit"> Check Hibrid</button>
-        </form>
-    </div>
-
-
-
-
 </div>
 
 

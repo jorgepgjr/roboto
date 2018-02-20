@@ -1,12 +1,14 @@
 package com.jorge.cycletimecrawler.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.apache.commons.collections4.CollectionUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,11 +22,16 @@ import java.util.List;
 public class Sku {
 
     private String sku;
-    @JsonIgnore
-    private List<String> images;
+    private Image images;
     private List<Price> prices;
 
     public void addImage(String image){
-        images.add(image);
+        List<String> zooms = images.getZooms();
+
+        if (CollectionUtils.isEmpty(images.getZooms())){
+            zooms = new ArrayList<>();
+        }
+
+        zooms.add(image);
     }
 }

@@ -1,5 +1,6 @@
 package com.jorge.cycletimecrawler.service;
 
+import com.jorge.cycletimecrawler.entity.Image;
 import com.jorge.cycletimecrawler.entity.Sku;
 import org.apache.http.client.utils.URIBuilder;
 import org.jsoup.Connection;
@@ -24,7 +25,7 @@ public class ImageCrawlerService {
 
     @Async
     public CompletableFuture<Sku> getImages(String sku) {
-        Sku product = new Sku(sku, new ArrayList<>(), null);
+        Sku product = new Sku(sku, new Image(), null);
         Document doc;
         try {
             System.out.println("Buscando SKU: " + sku + "...");
@@ -34,13 +35,13 @@ public class ImageCrawlerService {
                     .timeout(10000)
                     .get();
 
-            Elements elements = doc.getElementsByClass("photo-gallery-list");
+            Elements elements = doc.getElementsByClass("photo");
             if (elements == null || elements.size() == 0) {
                 System.out.println("SKU: " + sku + "não encontrado");
             } else {
-                Elements links = elements.get(0).getElementsByTag("a");
+                Elements links = elements.get(0).getElementsByTag("img");
                 for (Element link : links) {
-                    final String image = link.attr("data-large");
+                    final String image = link.attr("src");
                     final URIBuilder builder = new URIBuilder(image);
 
                     product.addImage(builder.getHost() + builder.getPath());

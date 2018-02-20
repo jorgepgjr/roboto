@@ -51,15 +51,15 @@ public class ImagesServiceTests {
     }
 
     private void writeBook(Sku sku, Row row) {
-        Cell cell = row.createCell(1);
-        cell.setCellValue(sku.getSku());
-
-        final List<String> images = sku.getImages();
-
-        for (int i = 0; i < images.size() ; i++) {
-            cell = row.createCell(i+2);
-            cell.setCellValue(images.get(i));
-        }
+//        Cell cell = row.createCell(1);
+//        cell.setCellValue(sku.getSku());
+//
+//        final List<String> images = sku.getImages();
+//
+//        for (int i = 0; i < images.size() ; i++) {
+//            cell = row.createCell(i+2);
+//            cell.setCellValue(images.get(i));
+//        }
 
     }
 
